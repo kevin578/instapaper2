@@ -13,10 +13,19 @@ const getNYT = new Promise((resolve, reject)=> {
         if (err) return reject(err);
         let $ = cheerio.load(body);
  
-        $(`.${sectionClass}`).each((i, el)=> {
-              const section = $(el).find('h2').first().text();
-              console.log(section)
-        })
+       
+       $('a').each((i, el)=> {
+           nytimesArticles.push({
+            link: $(el).attr('href')
+           })
+       })
+       
+       
+       
+        // $(`.${sectionClass}`).each((i, el)=> {
+        //       const section = $(el).find('h2').first().text();
+        //       console.log(section)
+        // })
 
       
         // const url = $(el).find('a').attr("href") 
